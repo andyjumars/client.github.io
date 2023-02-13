@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>client客戶端大小使用</title>
+	</head>
+	<body>
+		<div id="box" style="width: 200px;height: 200px;border: 1px solid red;padding: 20px;display: none;"></div>
+		<script type="text/javascript">
+			// client 客戶端大小 :指的是當元素內容到旁邊距離佔據的空間大小
+			
+			// 不包含border
+			//1. clientWidth  = width + padding-left + padding-right
+			//2. clientHeight  = height + padding-top + padding-bottom
+			//3. clientLeft  左邊框的大小
+			//4. clientTop   上邊框的大小
+			
+			var box = document.getElementById('box');
+			console.log(box.clientWidth,box.clientHeight);
+			console.log(box.clientTop,box.clientLeft);
+			
+			// 獲取頁面的大小
+			/* console.log(document.documentElement.clientWidth);
+			console.log(document.documentElement.clientHeight); */
+			
+			// 注意
+			// 1.所有客戶屬性都是只讀的
+			// 靜態失敗
+			/* box.clientHeight = 10;
+			console.log(box.clientHeight); */
+			
+			// 2.如果給元素設置顯示：無；客戶端client屬性都為0
+			
+			
+			// 3.盡量避免重複訪問這些屬性，讓b在全域賦值，再把變數b放入for循環裡就會快很多		console.time('time');
+			var b = box.clientHeight;
+			for(var i = 0; i < 100000; i++){
+				var a = b;
+			}
+			console.timeEnd('time');//time: 2.357177734375ms
+		</script>
+	</body>
+</html>
